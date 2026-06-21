@@ -1,0 +1,1021 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <meta http-equiv="Expires" content="0">
+  <title>홍길동 | 자기소개서</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #0a192f;
+      --light-navy: #112240;
+      --lightest-navy: #233554;
+      --slate: #8892b0;
+      --light-slate: #a8b2d1;
+      --lightest-slate: #ccd6f6;
+      --white: #e6f1ff;
+      --green: #64ffda;
+      --green-tint: rgba(100, 255, 218, 0.1);
+      --warm-glow: rgba(201, 168, 124, 0.25);
+      --font-sans: "Inter", "Segoe UI", "Malgun Gothic", sans-serif;
+      --font-mono: "SF Mono", "Consolas", "Liberation Mono", monospace;
+      --fz-xs: 13px;
+      --fz-sm: 14px;
+      --fz-md: 16px;
+      --fz-lg: 20px;
+      --fz-xl: clamp(24px, 5vw, 32px);
+      --fz-xxl: clamp(32px, 7vw, 48px);
+      --transition: all 0.25s cubic-bezier(0.645, 0.045, 0.355, 1);
+      --nav-height: 100px;
+      --tab-height: 42px;
+      --sidebar-width: 480px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scrollbar-color: var(--dark-slate, #495670) var(--navy);
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--navy);
+      color: var(--slate);
+      line-height: 1.6;
+      font-size: var(--fz-md);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    ::selection {
+      background-color: var(--lightest-navy);
+      color: var(--lightest-slate);
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+      transition: var(--transition);
+    }
+
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: 0;
+      background: var(--green);
+      color: var(--navy);
+      padding: 8px 16px;
+      z-index: 999;
+    }
+
+    .skip-link:focus {
+      top: 0;
+    }
+
+    /* Layout */
+    .page {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Sidebar */
+    .sidebar {
+      width: var(--sidebar-width);
+      min-height: 100vh;
+      position: fixed;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      padding: 100px 50px 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      z-index: 10;
+    }
+
+    .sidebar-inner {
+      flex: 1;
+    }
+
+    /* Sidebar avatar */
+    .sidebar-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      margin-bottom: 28px;
+      border: 2px solid var(--green);
+      padding: 4px;
+      background: var(--light-navy);
+      box-shadow: 0 0 0 4px var(--green-tint), 0 8px 32px rgba(0, 0, 0, 0.35);
+      transition: var(--transition);
+    }
+
+    .sidebar-avatar:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 0 0 4px var(--green-tint), 0 0 24px var(--warm-glow);
+    }
+
+    .sidebar h1 {
+      font-size: var(--fz-xxl);
+      font-weight: 700;
+      color: var(--lightest-slate);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+
+    .sidebar .title {
+      font-size: var(--fz-xl);
+      font-weight: 600;
+      color: var(--green);
+      margin-top: 8px;
+      line-height: 1.2;
+    }
+
+    .sidebar .tagline {
+      margin-top: 24px;
+      max-width: 320px;
+      color: var(--slate);
+      font-size: var(--fz-md);
+      line-height: 1.5;
+    }
+
+    .sidebar nav {
+      margin-top: 48px;
+    }
+
+    .sidebar nav ol {
+      list-style: none;
+      counter-reset: nav-counter;
+    }
+
+    .sidebar nav li {
+      margin-bottom: 8px;
+    }
+
+    .sidebar nav a {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 8px 0;
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--slate);
+      width: 100%;
+      max-width: 200px;
+    }
+
+    .sidebar nav a::before {
+      counter-increment: nav-counter;
+      content: "0" counter(nav-counter) ".";
+      text-align: right;
+      color: var(--green);
+      font-size: var(--fz-xs);
+      min-width: 28px;
+    }
+
+    .sidebar nav a span {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .sidebar nav a span::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      height: 1px;
+      background: var(--green);
+      transition: width 0.3s ease;
+    }
+
+    .sidebar nav a:hover span::after,
+    .sidebar nav a.active span::after {
+      width: 100%;
+    }
+
+    .sidebar nav a:hover,
+    .sidebar nav a.active {
+      color: var(--green);
+    }
+
+    .social-list {
+      display: flex;
+      gap: 20px;
+      list-style: none;
+      margin-top: 24px;
+    }
+
+    .social-list a {
+      color: var(--light-slate);
+      padding: 8px;
+    }
+
+    .social-list a:hover {
+      color: var(--green);
+      transform: translateY(-3px);
+    }
+
+    .social-list svg {
+      width: 20px;
+      height: 20px;
+      fill: currentColor;
+    }
+
+    /* Main content */
+    .main {
+      margin-left: var(--sidebar-width);
+      width: calc(100% - var(--sidebar-width));
+      padding: 0 100px 100px 50px;
+    }
+
+    section {
+      padding: 100px 0;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    section:first-of-type {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 0;
+    }
+
+    /* About + profile */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    .about-text {
+      min-width: 0;
+    }
+
+    .profile-wrap {
+      max-width: 280px;
+      margin-left: auto;
+    }
+
+    .profile-box {
+      width: 100%;
+      aspect-ratio: 1;
+      border: 2px solid var(--green);
+      border-radius: 8px;
+      overflow: hidden;
+      background: var(--light-navy);
+      box-shadow: 0 0 0 4px var(--green-tint);
+      line-height: 0;
+    }
+
+    .profile-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      filter: grayscale(30%) contrast(1.05);
+      transition: var(--transition);
+    }
+
+    .profile-wrap:hover .profile-photo {
+      filter: grayscale(0%) contrast(1);
+    }
+
+    .profile-caption {
+      margin-top: 16px;
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--slate);
+      text-align: center;
+    }
+
+    .profile-caption span {
+      color: var(--green);
+    }
+
+    .section-heading {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-bottom: 40px;
+      white-space: nowrap;
+      font-size: var(--fz-xl);
+      font-weight: 600;
+      color: var(--lightest-slate);
+    }
+
+    .section-heading::after {
+      content: "";
+      display: block;
+      width: 300px;
+      max-width: 100%;
+      height: 1px;
+      background: var(--lightest-navy);
+    }
+
+    section p {
+      margin-bottom: 16px;
+      color: var(--slate);
+      font-size: var(--fz-lg);
+      line-height: 1.7;
+    }
+
+    section p:last-child {
+      margin-bottom: 0;
+    }
+
+    .inline-link {
+      color: var(--green);
+      display: inline-block;
+      position: relative;
+    }
+
+    .inline-link::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 2px;
+      height: 1px;
+      background: var(--green);
+      transition: var(--transition);
+    }
+
+    .inline-link:hover::after {
+      bottom: 6px;
+    }
+
+    /* Traits */
+    .trait-list {
+      display: grid;
+      gap: 24px;
+    }
+
+    .trait-item {
+      position: relative;
+      padding: 24px;
+      background: var(--light-navy);
+      border-radius: 4px;
+      transition: var(--transition);
+      border: 1px solid transparent;
+    }
+
+    .trait-item:hover {
+      border-color: var(--green);
+      transform: translateY(-4px);
+      box-shadow: 0 10px 30px -15px rgba(2, 12, 27, 0.7);
+    }
+
+    .trait-item h3 {
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .trait-item p,
+    .trait-item li {
+      color: var(--light-slate);
+      font-size: var(--fz-md);
+    }
+
+    .trait-item ul {
+      list-style: none;
+    }
+
+    .trait-item li {
+      position: relative;
+      padding-left: 20px;
+      margin-bottom: 8px;
+    }
+
+    .trait-item li::before {
+      content: "▹";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+    }
+
+    .trait-note {
+      margin-top: 12px;
+      font-size: var(--fz-sm) !important;
+      color: var(--slate) !important;
+      font-style: italic;
+    }
+
+    /* Experience list */
+    .experience-list {
+      list-style: none;
+    }
+
+    .experience-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr 4fr;
+      gap: 16px;
+      padding: 24px;
+      margin-bottom: 8px;
+      border-radius: 4px;
+      transition: var(--transition);
+      cursor: default;
+    }
+
+    .experience-item::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 4px;
+      background: var(--light-navy);
+      z-index: 0;
+      transition: var(--transition);
+      opacity: 0;
+    }
+
+    .experience-item:hover::before {
+      opacity: 1;
+    }
+
+    .experience-item > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    .experience-date {
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--light-slate);
+      padding-top: 4px;
+    }
+
+    .experience-title {
+      font-size: var(--fz-md);
+      font-weight: 500;
+      color: var(--lightest-slate);
+      margin-bottom: 4px;
+    }
+
+    .experience-title .company {
+      color: var(--green);
+    }
+
+    .experience-desc {
+      font-size: var(--fz-sm);
+      color: var(--slate);
+      margin: 12px 0;
+      line-height: 1.6;
+    }
+
+    .skill-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      list-style: none;
+      margin-top: 12px;
+    }
+
+    .skill-tags li {
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--light-slate);
+      background: var(--green-tint);
+      padding: 4px 10px;
+      border-radius: 999px;
+    }
+
+    /* Goals / Projects style cards */
+    .goal-list {
+      list-style: none;
+      display: grid;
+      gap: 16px;
+    }
+
+    .goal-item {
+      position: relative;
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+      padding: 24px;
+      background: var(--light-navy);
+      border-radius: 4px;
+      transition: var(--transition);
+      border: 1px solid var(--lightest-navy);
+    }
+
+    .goal-item:hover {
+      border-color: var(--green);
+      transform: translateY(-4px);
+    }
+
+    .goal-item header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 16px;
+    }
+
+    .goal-item h3 {
+      font-size: var(--fz-md);
+      color: var(--lightest-slate);
+      font-weight: 600;
+    }
+
+    .goal-item h3 a {
+      color: inherit;
+    }
+
+    .goal-item h3 a:hover {
+      color: var(--green);
+    }
+
+    .goal-period {
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--slate);
+      white-space: nowrap;
+    }
+
+    .goal-item p {
+      font-size: var(--fz-sm);
+      margin: 0;
+    }
+
+    /* Tips */
+    .tips-box {
+      margin-top: 40px;
+      padding: 24px;
+      border-left: 2px solid var(--green);
+      background: var(--green-tint);
+      border-radius: 0 4px 4px 0;
+    }
+
+    .tips-box h3 {
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--green);
+      margin-bottom: 12px;
+    }
+
+    .tips-box ul {
+      list-style: none;
+    }
+
+    .tips-box li {
+      font-size: var(--fz-sm);
+      color: var(--light-slate);
+      padding: 4px 0;
+      padding-left: 16px;
+      position: relative;
+    }
+
+    .tips-box li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: var(--green);
+      font-size: 12px;
+    }
+
+    /* Footer */
+    .main-footer {
+      padding: 40px 0 80px;
+      text-align: center;
+      font-family: var(--font-mono);
+      font-size: var(--fz-xs);
+      color: var(--slate);
+      line-height: 1.8;
+    }
+
+    .main-footer a {
+      color: var(--green);
+    }
+
+    /* Mobile nav */
+    .mobile-nav {
+      display: none;
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: rgba(10, 25, 47, 0.95);
+      backdrop-filter: blur(10px);
+      border-top: 1px solid var(--lightest-navy);
+      z-index: 100;
+      padding: 12px 16px;
+      overflow-x: auto;
+    }
+
+    .mobile-nav ol {
+      display: flex;
+      gap: 16px;
+      list-style: none;
+      counter-reset: mob-nav;
+    }
+
+    .mobile-nav a {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--slate);
+      white-space: nowrap;
+    }
+
+    .mobile-nav a.active {
+      color: var(--green);
+    }
+
+    @media (max-width: 1080px) {
+      :root {
+        --sidebar-width: 0px;
+      }
+
+      .sidebar {
+        position: relative;
+        width: 100%;
+        min-height: auto;
+        padding: 80px 24px 40px;
+      }
+
+      .sidebar nav {
+        display: none;
+      }
+
+      .page {
+        flex-direction: column;
+      }
+
+      .main {
+        margin-left: 0;
+        width: 100%;
+        padding: 0 24px 100px;
+      }
+
+      section {
+        padding: 60px 0;
+      }
+
+      section:first-of-type {
+        min-height: auto;
+        padding-top: 0;
+      }
+
+      .experience-item {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+
+      .mobile-nav {
+        display: block;
+      }
+
+      .section-heading::after {
+        width: 120px;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+
+      .profile-wrap {
+        max-width: 220px;
+        margin: 0 auto;
+      }
+
+      .profile-caption {
+        text-align: center;
+        padding-right: 0;
+      }
+
+      .sidebar-avatar {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .sidebar-inner {
+        text-align: center;
+      }
+
+      .sidebar .tagline {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .social-list {
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 1080px) {
+      .sidebar {
+        position: static;
+      }
+    }
+
+    @media print {
+      body { background: #fff; color: #000; }
+      .sidebar, .mobile-nav { display: none; }
+      .main { margin: 0; padding: 20px; width: 100%; }
+      section { opacity: 1; transform: none; page-break-inside: avoid; }
+      .section-heading { color: #000; }
+      section p { color: #333; }
+    }
+  </style>
+</head>
+<body>
+
+  <a href="#content" class="skip-link">본문으로 건너뛰기</a>
+
+  <div class="page">
+    <aside class="sidebar">
+      <div class="sidebar-inner">
+        <img
+          class="sidebar-avatar"
+          src="images/profile.png?v=3"
+          alt="홍길동 프로필 사진"
+          width="120"
+          height="120"
+        >
+        <h1 id="siteName">홍길동</h1>
+        <p class="title" id="siteRole">지원 직무</p>
+        <p class="tagline" id="siteTagline">
+          성장과 도전을 통해 가치를 만들어가는 지원자입니다.
+        </p>
+
+        <nav aria-label="섹션 네비게이션">
+          <ol id="navList">
+            <li><a href="#about" class="nav-link"><span>About</span></a></li>
+            <li><a href="#personality" class="nav-link"><span>Personality</span></a></li>
+            <li><a href="#experience" class="nav-link"><span>Experience</span></a></li>
+            <li><a href="#goals" class="nav-link"><span>Goals</span></a></li>
+          </ol>
+        </nav>
+      </div>
+
+      <ul class="social-list">
+        <li>
+          <a href="mailto:example@email.com" aria-label="이메일">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="tel:010-0000-0000" aria-label="전화">
+            <svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1-9.4 0-17-7.6-17-17 0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="LinkedIn">
+            <svg viewBox="0 0 24 24"><path d="M19 3a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h14m-.5 15.5v-5.3a3.26 3.26 0 0 0-3.26-3.26c-.85 0-1.84.52-2.32 1.3v-1.11h-2.79v8.37h2.79v-4.93c0-.77.62-1.4 1.39-1.4a1.4 1.4 0 0 1 1.4 1.4v4.93h2.79M6.88 8.56a1.68 1.68 0 0 0 1.68-1.68c0-.93-.75-1.69-1.68-1.69a1.69 1.69 0 0 0-1.69 1.69c0 .93.76 1.68 1.69 1.68m1.39 9.94v-8.37H5.5v8.37h2.77z"/></svg>
+          </a>
+        </li>
+        <li>
+          <a href="#" aria-label="GitHub">
+            <svg viewBox="0 0 24 24"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.08.66-.23.66-.5v-1.69c-2.77.6-3.36-1.34-3.36-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.87 1.52 2.34 1.07 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.92 0-1.11.38-2 1.03-2.71-.1-.25-.45-1.29.1-2.64 0 0 .84-.27 2.75 1.02A9.58 9.58 0 0 1 12 6.8c.85.004 1.71.115 2.51.337 1.91-1.29 2.75-1.02 2.75-1.02.55 1.35.2 2.39.1 2.64.65.71 1.03 1.6 1.03 2.71 0 3.82-2.34 4.66-4.57 4.91.36.31.69.92.69 1.85V21c0 .27.16.59.67.5A10 10 0 0 0 22 12 10 10 0 0 0 12 2z"/></svg>
+          </a>
+        </li>
+      </ul>
+    </aside>
+
+    <main class="main" id="content">
+
+      <section id="about">
+        <h2 class="section-heading">About</h2>
+        <div class="about-grid">
+          <div class="about-text">
+            <p>
+              저는 <span class="inline-link">○○ 분야</span>에 관심을 갖고 관련 경험을 쌓아 왔습니다.
+              귀사는 △△ 분야에서 업계를 선도하고 있어, 제 역량을 발휘하기에
+              가장 적합한 환경이라 판단하여 지원하게 되었습니다.
+            </p>
+            <p>
+              어릴 때부터 ○○에 호기심이 많았고, ○○ 경험을 통해
+              문제를 끝까지 해결하는 태도를 기를 수 있었습니다.
+              학창 시절 프로젝트와 팀 활동을 거치며 협업의 중요성을 배웠고,
+              어려운 과제 앞에서도 포기하지 않고 대안을 찾는 습관이
+              저의 가장 큰 자산이 되었습니다.
+            </p>
+            <p>
+              단순히 안정적인 직장을 찾는 것이 아니라, 제가 가진 문제 해결 능력과
+              성장 의지를 실무에서 증명할 수 있는 무대를 기대합니다.
+            </p>
+          </div>
+          <figure class="profile-wrap">
+            <div class="profile-box">
+              <img
+                class="profile-photo"
+                src="images/profile.png?v=3"
+                alt="홍길동 프로필 사진"
+                width="280"
+                height="280"
+              >
+            </div>
+            <figcaption class="profile-caption">
+              <span>Hello!</span> — Portfolio 2026
+            </figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section id="personality">
+        <h2 class="section-heading">Personality</h2>
+        <div class="trait-list">
+          <article class="trait-item">
+            <h3>Strengths</h3>
+            <ul>
+              <li>맡은 일에 대한 책임감이 강하고 마감 기한을 반드시 지킵니다.</li>
+              <li>새로운 기술과 지식을 배우는 데 적극적이며 빠르게 습득합니다.</li>
+            </ul>
+          </article>
+          <article class="trait-item">
+            <h3>Weaknesses</h3>
+            <ul>
+              <li>완벽을 추구하다 작업 시간이 길어지는 경향이 있습니다.</li>
+            </ul>
+            <p class="trait-note">
+              이를 보완하기 위해 우선순위를 정하고 80% 완성도에서
+              피드백을 받은 뒤 개선하는 방식으로 업무 방식을 조정하고 있습니다.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="experience">
+        <h2 class="section-heading">Experience</h2>
+        <ol class="experience-list">
+          <li class="experience-item">
+            <div class="experience-date">20XX.03 — 20XX.02</div>
+            <div>
+              <h3 class="experience-title">
+                ○○학과 · <span class="company">○○ 대학교</span>
+              </h3>
+              <p class="experience-desc">
+                전공 수업과 프로젝트를 통해 ○○ 역량을 키웠으며,
+                ○○ 동아리에서 팀장으로 활동하며 리더십을 경험했습니다.
+                팀 프로젝트 우수상 수상, 협업과 일정 관리의 중요성을 체득했습니다.
+              </p>
+              <ul class="skill-tags">
+                <li>팀 프로젝트</li>
+                <li>리더십</li>
+                <li>협업</li>
+              </ul>
+            </div>
+          </li>
+          <li class="experience-item">
+            <div class="experience-date">20XX.06 — 20XX.08</div>
+            <div>
+              <h3 class="experience-title">
+                인턴 · <span class="company">○○ 기업</span>
+              </h3>
+              <p class="experience-desc">
+                실무 환경에서 ○○ 업무를 담당하며
+                이론과 실무의 차이를 경험하고 문제 해결 능력을 키웠습니다.
+                업무 프로세스 이해 및 실무 도구 활용 능력을 향상시켰습니다.
+              </p>
+              <ul class="skill-tags">
+                <li>실무 경험</li>
+                <li>문제 해결</li>
+                <li>업무 프로세스</li>
+              </ul>
+            </div>
+          </li>
+        </ol>
+      </section>
+
+      <section id="goals">
+        <h2 class="section-heading">Goals</h2>
+        <ul class="goal-list">
+          <li class="goal-item">
+            <header>
+              <h3><a href="#">단기 목표 (1~2년)</a></h3>
+              <span class="goal-period">2026 — 2028</span>
+            </header>
+            <p>
+              입사 후 빠르게 업무에 적응하고, 선배님들의 노하우를
+              배워 실무 역량을 갖춘 팀원이 되겠습니다.
+            </p>
+          </li>
+          <li class="goal-item">
+            <header>
+              <h3><a href="#">중장기 목표 (3~5년)</a></h3>
+              <span class="goal-period">2028 — 2031</span>
+            </header>
+            <p>
+              전문성을 바탕으로 팀의 핵심 인재로 성장하고,
+              후배를 이끌며 조직에 기여하는 리더가 되고 싶습니다.
+            </p>
+          </li>
+        </ul>
+
+        <div class="tips-box">
+          <h3>Writing Tips</h3>
+          <ul>
+            <li>각 항목은 구체적인 경험과 숫자(성과)를 포함하면 좋습니다.</li>
+            <li>"○○ 상황에서 △△ 행동하여 □□ 결과를 냈습니다" 형식을 권장합니다.</li>
+            <li>지원 회사·직무에 맞게 내용을 수정해 사용하세요.</li>
+          </ul>
+        </div>
+      </section>
+
+      <footer class="main-footer">
+        <p>
+          Loosely inspired by
+          <a href="https://brittanychiang.com/" target="_blank" rel="noopener noreferrer">brittanychiang.com</a>
+        </p>
+        <p>Built with HTML, CSS &amp; JavaScript · © 2026 홍길동 · <span id="buildVersion">v3</span></p>
+      </footer>
+    </main>
+  </div>
+
+  <nav class="mobile-nav" aria-label="모바일 네비게이션">
+    <ol id="mobileNavList">
+      <li><a href="#about">About</a></li>
+      <li><a href="#personality">Personality</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#goals">Goals</a></li>
+    </ol>
+  </nav>
+
+  <script>
+    const resumeData = {
+      name: "홍길동",
+      role: "지원 직무",
+      roleDetail: "(지원하려는 직무를 입력하세요)",
+      phone: "010-0000-0000",
+      email: "example@email.com",
+      tagline: "성장과 도전을 통해 가치를 만들어가는 지원자입니다.",
+    };
+
+    document.getElementById("siteName").textContent = resumeData.name;
+    document.getElementById("siteRole").textContent = resumeData.role + " · " + resumeData.roleDetail;
+    document.getElementById("siteTagline").textContent = resumeData.tagline;
+    document.title = resumeData.name + " | 자기소개서";
+
+    document.querySelectorAll(".sidebar-avatar, .profile-photo").forEach((img) => {
+      img.alt = resumeData.name + " 프로필 사진";
+    });
+
+    const sections = document.querySelectorAll("main section");
+    const navLinks = document.querySelectorAll(".nav-link");
+    const mobileLinks = document.querySelectorAll("#mobileNavList a");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) entry.target.classList.add("visible");
+        });
+      },
+      { threshold: 0.1, rootMargin: "0px 0px -80px 0px" }
+    );
+
+    sections.forEach((s) => observer.observe(s));
+
+    function updateActiveNav() {
+      let current = "";
+      const scrollY = window.scrollY + 200;
+
+      sections.forEach((section) => {
+        if (scrollY >= section.offsetTop) {
+          current = section.getAttribute("id");
+        }
+      });
+
+      [...navLinks, ...mobileLinks].forEach((link) => {
+        const href = link.getAttribute("href").slice(1);
+        link.classList.toggle("active", href === current);
+      });
+    }
+
+    window.addEventListener("scroll", updateActiveNav, { passive: true });
+    updateActiveNav();
+
+    navLinks.forEach((link) => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const target = document.querySelector(link.getAttribute("href"));
+        if (target) target.scrollIntoView({ behavior: "smooth" });
+      });
+    });
+  </script>
+</body>
+</html>
